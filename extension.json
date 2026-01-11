@@ -1,0 +1,189 @@
+{  
+    "name": "privkit",  
+    "version": "0.0.1",  
+    "extension_author": "aredspy",  
+    "original_author": "mertdas",  
+    "repo_url": "https://github.com/mertdas/PrivKit",  
+    "commands": [  
+        {  
+            "command_name": "privkit-always-install-elevated-check",  
+            "help": "Check for AlwaysInstallElevated privilege escalation vulnerability.",  
+            "entrypoint": "go",  
+            "depends_on": "coff-loader",  
+            "files": [  
+                {  
+                    "os": "windows",  
+                    "arch": "amd64",  
+                    "path": "AlwaysInstallElevatedCheck/AlwaysInstallElevatedCheck.x64.o"  
+                },
+                {  
+                    "os": "windows",  
+                    "arch": "386",  
+                    "path": "AlwaysInstallElevatedCheck/AlwaysInstallElevatedCheck.x86.o"  
+                }    
+            ]  
+        },  
+        {  
+            "command_name": "privkit-auto-logon-check",  
+            "help": "Checks the Winlogon registry key for stored autologon credentials. If AutoAdminLogon=1 and DefaultPassword is set, credentials are exposed.",  
+            "entrypoint": "go",  
+            "depends_on": "coff-loader",  
+            "files": [  
+                {  
+                    "os": "windows",  
+                    "arch": "amd64",  
+                    "path": "AutoLogonCheck/AutoLogonCheck.x64.o"  
+                },
+                {  
+                    "os": "windows",  
+                    "arch": "386",  
+                    "path": "AutoLogonCheck/AutoLogonCheck.x86.o"  
+                }    
+            ]  
+        },  
+        {  
+            "command_name": "privkit-credential-manager-check",  
+            "help": "Enumerates all stored credentials in Windows Credential Manager for the current user context. Shows target, username, and password.",  
+            "entrypoint": "go",  
+            "depends_on": "coff-loader",  
+            "files": [  
+                {  
+                    "os": "windows",  
+                    "arch": "amd64",  
+                    "path": "CredentialManagerCheck/CredentialManagerCheck.x64.o"  
+                },
+                {  
+                    "os": "windows",  
+                    "arch": "386",  
+                    "path": "CredentialManagerCheck/CredentialManagerCheck.x86.o"  
+                }    
+            ]  
+        },  
+        {  
+            "command_name": "privkit-hijackable-path-check",  
+            "help": "Enumerates the system PATH environment variable and checks each directory for write permissions. Writable directories in PATH can be abused for DLL hijacking or binary planting.",  
+            "entrypoint": "go",  
+            "depends_on": "coff-loader",  
+            "files": [  
+                {  
+                    "os": "windows",  
+                    "arch": "amd64",  
+                    "path": "HijackablePathCheck/HijackablePathCheck.x64.o"  
+                },
+                {  
+                    "os": "windows",  
+                    "arch": "386",  
+                    "path": "HijackablePathCheck/HijackablePathCheck.x86.o"  
+                }    
+            ]  
+        },  
+        {  
+            "command_name": "privkit-modifiable-autorun-check",  
+            "help": "Enumerates autorun registry keys and checks if the referenced executables are writable by current user.",  
+            "entrypoint": "go",  
+            "depends_on": "coff-loader",  
+            "files": [  
+                {  
+                    "os": "windows",  
+                    "arch": "amd64",  
+                    "path": "ModifiableAutorunCheck/ModifiableAutorunCheck.x64.o"  
+                },
+                {  
+                    "os": "windows",  
+                    "arch": "386",  
+                    "path": "ModifiableAutorunCheck/ModifiableAutorunCheck.x86.o"  
+                }    
+            ]  
+        },  
+        {  
+            "command_name": "privkit-modifiable-svc-check",  
+            "help": " Enumerates all Windows services and checks their security descriptors to find services that the current user can modify.",  
+            "entrypoint": "go",  
+            "depends_on": "coff-loader",  
+            "files": [  
+                {  
+                    "os": "windows",  
+                    "arch": "amd64",  
+                    "path": "ModifiableSVCCheck/ModifiableSVCCheck.x64.o"  
+                },
+                {  
+                    "os": "windows",  
+                    "arch": "386",  
+                    "path": "ModifiableSVCCheck/ModifiableSVCCheck.x86.o"  
+                }    
+            ]  
+        },  
+        {  
+            "command_name": "privkit-power-shell-history-check",  
+            "help": "Checks if the PowerShell PSReadLine history file exists. This file may contain sensitive commands, credentials, or secrets.",  
+            "entrypoint": "go",  
+            "depends_on": "coff-loader",  
+            "files": [  
+                {  
+                    "os": "windows",  
+                    "arch": "amd64",  
+                    "path": "PowerShellHistoryCheck/PowerShellHistoryCheck.x64.o"  
+                },
+                {  
+                    "os": "windows",  
+                    "arch": "386",  
+                    "path": "PowerShellHistoryCheck/PowerShellHistoryCheck.x86.o"  
+                }    
+            ]  
+        },  
+        {  
+            "command_name": "privkit-token-privileges-check",  
+            "help": "Enumerates all privileges for the current process token and shows their enabled/disabled status.",  
+            "entrypoint": "go",  
+            "depends_on": "coff-loader",  
+            "files": [  
+                {  
+                    "os": "windows",  
+                    "arch": "amd64",  
+                    "path": "TokenPrivilegesCheck/TokenPrivilegesCheck.x64.o"  
+                },
+                {  
+                    "os": "windows",  
+                    "arch": "386",  
+                    "path": "TokenPrivilegesCheck/TokenPrivilegesCheck.x86.o"  
+                }    
+            ]  
+        },  
+        {  
+            "command_name": "privkit-uac-status-check",  
+            "help": "Checks UAC registry settings, current process integrity level, and local administrator group membership.",  
+            "entrypoint": "go",  
+            "depends_on": "coff-loader",  
+            "files": [  
+                {  
+                    "os": "windows",  
+                    "arch": "amd64",  
+                    "path": "UACStatusCheck/UACStatusCheck.x64.o"  
+                },
+                {  
+                    "os": "windows",  
+                    "arch": "386",  
+                    "path": "UACStatusCheck/UACStatusCheck.x86.o"  
+                }    
+            ]  
+        },
+        {  
+            "command_name": "privkit-unquoted-svc-path-check",  
+            "help": "Enumerates Windows services and checks for unquoted paths containing spaces. These can be exploited for privilege escalation.",  
+            "entrypoint": "go",  
+            "depends_on": "coff-loader",  
+            "files": [  
+                {  
+                    "os": "windows",  
+                    "arch": "amd64",  
+                    "path": "UnquotedSVCPathCheck/UnquotedSVCPathCheck.x64.o"  
+                },
+                {  
+                    "os": "windows",  
+                    "arch": "386",  
+                    "path": "UnquotedSVCPathCheck/UnquotedSVCPathCheck.x86.o"  
+                }    
+            ]  
+        }
+    ]  
+}
